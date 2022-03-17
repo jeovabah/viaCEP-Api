@@ -1,0 +1,65 @@
+ <html>
+    <head>
+    <title>ViaCEP Webservice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script>
+        
+        function send() {
+            var text = ''
+            var cep = document.querySelector('#cep');
+            console.log(cep.value);
+
+            if(cep != '') {
+                var url = 'https://viacep.com.br/ws/' +cep.value + '/json/'
+
+                $.getJSON(url, function(data) {
+                    console.log(data)
+                    if(cep.value == data.cep) {
+                        console.log(data.cep)
+                        document.getElementById('resultado').innerHTML = `
+                        <span>${data.logradouro == "" ?'' : data.logradouro + ','}</span>
+                        <span>${data.bairro== "" ?'' : data.bairro + ','}</span>
+                        <span>${data.localidade} -</span>
+                        <span>${data.uf},</span>
+                        <span>${data.cep}.</span>
+                    `
+                    }else {
+                        alert('Cep Inválido')
+                        document.getElementById('resultado').innerHTML = ""
+                    } 
+                })  
+            }else {
+                alert('Cep Inválido')
+                
+            } 
+                
+        }
+         
+    </script>
+    </head>
+
+    <body>
+    
+      <section>
+          <h1>Consulta de CEP</h1>
+        <label>CEP:
+        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"  /></label><br />
+        <p class="info">Utilize o caractere especial. Ex: (<span class="infoCep">00000-000</span>)</p>
+
+        <div class="result">
+            <p id="resultado"></p>
+
+        </div>
+        <button onclick="send()" >Consultar CEP</button>
+    </section> 
+
+      
+    </body>
+
+    </html>
+    

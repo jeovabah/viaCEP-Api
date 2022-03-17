@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section {
+    width: 100vw;
+    height: 100vh;
+    background: #6C7A89;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 8rem;
+}
+section label {
+    font-size: 1.2rem;
+}
+section input {
+    padding: .5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+section .info {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: -1rem;
+    margin-bottom: 4rem;
+
+} 
+section button {
+    padding: .5rem 1.5rem .5rem;
+    margin: 1rem;
+
+    border-radius: 0.5rem;
+    border: 0;
+
+    background-color: #fff;
+    border: solid 1px black;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+section button:hover {
+    border: solid 1px gray;
+    color: gray;
+
+}
+

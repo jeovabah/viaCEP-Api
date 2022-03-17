@@ -1,6 +1,6 @@
  <html>
     <head>
-    <title>ViaCEP Webservice</title>
+    <title>ViaCEP Api</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="style.css">
     
@@ -10,7 +10,6 @@
     <script>
         
         function send() {
-            var text = ''
             var cep = document.querySelector('#cep');
             console.log(cep.value);
 
@@ -19,6 +18,8 @@
 
                 $.getJSON(url, function(data) {
                     console.log(data)
+
+                    //Verificando se o cep de entrada é igual ao da API. 
                     if(cep.value == data.cep) {
                         console.log(data.cep)
                         document.getElementById('resultado').innerHTML = `
@@ -30,13 +31,12 @@
                     `
                     }else {
                         alert('Cep Inválido')
+                        //Voltando os valores para strings vazias
                         document.getElementById('resultado').innerHTML = ""
+                        document.getElementById('cep').value = ""
                     } 
                 })  
-            }else {
-                alert('Cep Inválido')
-                
-            } 
+            }
                 
         }
          
